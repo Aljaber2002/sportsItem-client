@@ -1,17 +1,19 @@
 import { useAppSelector } from "@/Redux/hook";
 import { RootState } from "@/Redux/store";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 
 const AuthLayout = ({ children }: { children: ReactNode }) => {
   const navigate = useNavigate();
   const { accessToken } = useAppSelector((state: RootState) => state.Auth);
-  if (!accessToken) {
-    navigate("/login");
-  }
+  useEffect(() => {
+    if (!accessToken) {
+      navigate("/login");
+    }
+  }, [accessToken, navigate]);
 
-  return <>{children}</>;
+  return accessToken ? <>{children}</> : null;
 };
 
 export default AuthLayout;

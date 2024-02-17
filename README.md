@@ -1,5 +1,7 @@
 Project name:SPorts items managemnet(Frontend)
 
+Live url : https://lustrous-llama-073b7c.netlify.app/
+
 usage technologies:
 
 1.Redux for state management
