@@ -17,7 +17,9 @@ usage technologies:
 How to run this application locally?
 
 Base url :http://localhost:5173/
+
 Others path:
+
 To view our sports items store visit http://localhost:5173/sports-items
 
 To add item in the store visit http://localhost:5173/add-item
