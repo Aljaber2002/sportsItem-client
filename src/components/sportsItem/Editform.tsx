@@ -93,7 +93,7 @@ const Editproduct = () => {
   return (
     <>
       <h1 className="hidden md:block md:font-bold md:text-slate-700 md:text-2xl">
-        Add product in your store
+        Edit product in your store
       </h1>
       <div
         style={{
