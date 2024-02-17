@@ -58,7 +58,7 @@ const Register = () => {
     }
 
     toast.success("created account successfully", { id: "unique" });
-    navigate("/login");
+    return navigate("/login");
   };
 
   return (

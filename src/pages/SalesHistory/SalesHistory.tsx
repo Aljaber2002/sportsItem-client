@@ -1,6 +1,6 @@
 import { useGetSaleshistoryQuery } from "@/Redux/Features/sportsItem/sportsItem";
 import { Button } from "@/components/ui/button";
-import React, { useState } from "react";
+import { useState } from "react";
 type BackendData = {
   [key: string]: number;
 };

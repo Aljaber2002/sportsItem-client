@@ -72,7 +72,7 @@ const Login = () => {
       })
     );
 
-    navigate("/");
+    return navigate("/sports-items");
   };
 
   return (

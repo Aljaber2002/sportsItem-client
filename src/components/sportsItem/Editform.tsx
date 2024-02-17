@@ -71,15 +71,16 @@ const Editproduct = () => {
   // 2. Define a submit handler.
   const [editProduct, { data, error }] = useEditProductMutation();
   console.log(data);
-  if (error) {
-    console.log(error);
+  const mainError: any = error;
+  if (mainError) {
+    console.log(mainError);
   }
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     // console.log(values, "test");
     toast.loading("please wait", { id: "edit" });
     values.id = product._id;
     await editProduct(values);
-    if (error?.status) {
+    if (mainError?.status) {
       return toast.error("something went wrong");
     }
 

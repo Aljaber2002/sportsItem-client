@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { Layout, Menu, theme } from "antd";
 import { NavLink, Outlet } from "react-router-dom";
 import { useAppDispatch } from "@/Redux/hook";
@@ -31,10 +31,7 @@ const MainLayout = () => {
         },
       ],
     },
-    {
-      key: "02",
-      label: <NavLink to="/sales-management">SalesManagement</NavLink>,
-    },
+
     {
       key: "03",
       label: <NavLink to="/sales-history">SalesHistory</NavLink>,
@@ -70,11 +67,6 @@ const MainLayout = () => {
         />
       </Header>
       <Content style={{ padding: "" }}>
-        {/* <Breadcrumb style={{ margin: "16px 0" }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb> */}
         <div
           style={{
             padding: 24,

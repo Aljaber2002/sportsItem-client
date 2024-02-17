@@ -5,11 +5,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import ItemCard from "./itemCard";
 import BulkDeleteDialog from "@/components/sportsItem/BulkDeleteDialog";
 import { toast } from "sonner";
 // import Search from "@/components/sportsItem/Search";
+
 type Tproducts = {
   success?: boolean;
   message?: string;
@@ -43,10 +44,11 @@ const Sportsitems = () => {
   const [query, setQuery] = useState({});
 
   const { data, error } = useGetSportsItemQuery(query);
+  const mainerror: any = error;
 
-  if (error?.data?.message) {
+  if (mainerror?.data?.message) {
     console.log(error);
-    toast.error(`${error?.data?.message}`, { id: "test" });
+    toast.error(`${mainerror?.data?.message}`, { id: "test" });
   }
 
   const storeProsuct: Tproducts = data;
@@ -70,7 +72,7 @@ const Sportsitems = () => {
   const finalMaterials = Array.from(newMaterial);
 
   // console.log(colors);
-  fetch("http://localhost:5000/sports-items/total-list")
+  fetch("https://assignment-5-server-beta.vercel.app/sports-items/total-list")
     .then((res) => res.json())
     .then((result) => setProducts(result));
 
@@ -105,7 +107,7 @@ const Sportsitems = () => {
     window.location.reload();
   };
   return (
-    <div className="grid  grid-cols-4 gap-4">
+    <div className="grid grid-cols-3  md:grid-cols-4 gap-4">
       <div className="">
         <div className="my-2">
           <div className="flex w-full max-w-sm items-center space-x-2">
@@ -215,13 +217,18 @@ const Sportsitems = () => {
           </div>
         </div>
         <div className="my-3">
-          <Button className="mx-3" onClick={handleQuery}>
+          <Button
+            className="block md:mx-3 md:inline my-2"
+            onClick={handleQuery}
+          >
             Apply
           </Button>
-          <Button onClick={handleCancel}>cancel</Button>
+          <Button className="block md:mx-3 md:inline" onClick={handleCancel}>
+            cancel
+          </Button>
         </div>
       </div>
-      <div className="col-span-3">
+      <div className="col-span-2 md:col-span-3">
         {/* <Button>Bulk Delete</Button> */}
         {mainStoreProduct?.length === 0 ? (
           <h1 className="text-red-600 font-bold m-5 text-3xl">
@@ -236,7 +243,7 @@ const Sportsitems = () => {
                 ></BulkDeleteDialog>
               </span>
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {mainStoreProduct?.map((product: Tproduct) => (
                 // <h1>hello</h1>
                 <ItemCard product={product}></ItemCard>

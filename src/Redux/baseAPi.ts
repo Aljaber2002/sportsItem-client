@@ -6,7 +6,7 @@ import { RootState } from "./store";
 export const baseAPi = createApi({
   reducerPath: "baseAPi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/sports-items",
+    baseUrl: "https://assignment-5-server-beta.vercel.app/sports-items",
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).Auth.accessToken;
       if (token) {
