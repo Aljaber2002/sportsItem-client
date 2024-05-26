@@ -17,6 +17,13 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useCreateUserMutation } from "@/Redux/Features/create-user/api";
 import { toast } from "sonner";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 // import { ReactNode } from "react";
 
 const formSchema = z.object({
@@ -24,6 +31,7 @@ const formSchema = z.object({
     message: "Username must be at least 2 characters.",
   }),
   name: z.string(),
+  role: z.string(),
   password: z.string(),
 });
 // const formStyle = {
@@ -39,6 +47,7 @@ const Register = () => {
       name: "",
 
       username: "",
+      role: "",
       password: "",
     },
   });
@@ -63,19 +72,22 @@ const Register = () => {
 
   return (
     <>
-      <h1 className="text-center my-5 font-bold text-slate-700 text-4xl">
+      <h1 className="text-center mt-[8px] font-bold text-slate-700 text-4xl">
         Register!!
       </h1>
       <div
         style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
+          position: "sticky",
+          // top: "50%",
+          // left: "50%",
+          // transform: "translate(-50%, -50%)",
           border: "2px solid slategray",
           padding: "20px",
+
           // backgroundColor:'slategray'
           borderRadius: "15px",
+          margin: "10px",
+          // width: "50%",
         }}
       >
         <Form {...form}>
@@ -103,6 +115,32 @@ const Register = () => {
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
+
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="role"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Role</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select role of user" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="admin">admin</SelectItem>
+                      <SelectItem value="manager">manager</SelectItem>
+                      <SelectItem value="seller">seller</SelectItem>
+                    </SelectContent>
+                  </Select>
 
                   <FormMessage />
                 </FormItem>
